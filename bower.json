@@ -1,0 +1,20 @@
+{
+  "name": "node_archetype",
+  "description": "node archetype",
+  "main": "index.js",
+  "authors": [
+    "Almer Nakano"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
