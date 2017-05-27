@@ -1,4 +1,4 @@
-# node_archetype
+# Node Quickstart
 Archetype for development.
 
 # Usage:
