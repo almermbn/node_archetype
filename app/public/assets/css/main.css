@@ -1,0 +1,18 @@
+.teste {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  transition: all .5s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: linear-gradient(to bottom, white, black); }
+
+.teste2 {
+  color: blue; }
+.testeLogin {
+  color: grey; }
+
+.testeLogin2 {
+  color: purple; }
