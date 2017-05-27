@@ -1,8 +1,8 @@
 # node_archetype
 Archetype for development.
 
-Usage:
+# Usage:
 
-npm install
+- npm install
 
-bower install
+- bower install
