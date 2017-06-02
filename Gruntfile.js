@@ -1,6 +1,8 @@
 module.exports = function(grunt) {
 
 grunt.initConfig({
+    
+
     pkg: grunt.file.readJSON('package.json'),
     wiredep: {
         task: {
@@ -15,12 +17,13 @@ grunt.initConfig({
         server: {
             options: {
                 port: 9001,
-                base: 'app',
-                options: {
-                    index: 'public/index.html'
+                base: 'app/public/',
+                open : {
+                    target: 'http://localhost:9001'
                 }
             }
         }
+        
     },
     injector: {
         options: {},
@@ -33,7 +36,7 @@ grunt.initConfig({
     watch: {
         scripts: {
             files: ['app/public/**/*'],
-            tasks: ['clean', 'sass', 'concat_css', 'autoprefixer', 'cssmin', 'wiredep', 'injector'],
+            tasks: ['clean', 'sass', 'concat_css', 'autoprefixer', 'cssmin', 'injector'],
             options: {
                 spawn: false,
                 livereload: 35729
@@ -83,8 +86,13 @@ grunt.initConfig({
         css: ['app/public/assets/css/**/*.css']
     },
     concurrent: {
-        default: ['wiredep', 'connect', 'injector', ['clean', 'sass', 'concat_css', 'autoprefixer', 'cssmin']],
-        watch: ['watch']
+        connect: ['connect'],
+        watch: ['watch'],
+        default: ['wiredep', 'injector'],
+        clean: [['clean', 'sass', 'concat_css', 'autoprefixer', 'cssmin']],
+        options: {
+            logConcurrentOutput: true
+        }
     }
 });
 
@@ -99,6 +107,7 @@ grunt.loadNpmTasks('grunt-concat-css');
 grunt.loadNpmTasks('grunt-autoprefixer');
 grunt.loadNpmTasks('grunt-contrib-clean');
 
-grunt.registerTask('default', ['concurrent:default', 'concurrent:watch']);
+
+grunt.registerTask('default', ['concurrent:default', 'concurrent:clean', 'connect', 'concurrent:watch'] );
 
 };
