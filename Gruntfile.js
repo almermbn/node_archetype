@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
 
 grunt.initConfig({
-    
 
     pkg: grunt.file.readJSON('package.json'),
     wiredep: {
@@ -86,7 +85,6 @@ grunt.initConfig({
         css: ['app/public/assets/css/**/*.css']
     },
     concurrent: {
-        connect: ['connect'],
         watch: ['watch'],
         default: ['wiredep', 'injector'],
         clean: [['clean', 'sass', 'concat_css', 'autoprefixer', 'cssmin']],
