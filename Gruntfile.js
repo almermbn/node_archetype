@@ -1,40 +1,20 @@
+'use strict';
+
 module.exports = function(grunt) {
 
 grunt.initConfig({
 
     pkg: grunt.file.readJSON('package.json'),
-    wiredep: {
-        task: {
-            src: [
-                'app/public/index.html'
-                ],
-                options: {
-                }
-            }
-    },
     connect: {
         server: {
             options: {
-                port: 9001,
-                base: 'app/public/',
-                open : {
-                    target: 'http://localhost:9001'
-                }
-            }
-        }
-        
-    },
-    injector: {
-        options: {},
-        local_dependencies: {
-            files: {
-                'app/public/index.html': ['app/public/css/main.min.js', 'app/public/**/main.min.css'],
+                port: 9001
             }
         }
     },
     watch: {
-        scripts: {
-            files: ['app/public/**/*'],
+        sass: {
+            files: ['public/**/*.{scss, sass}'],
             tasks: ['clean', 'sass', 'concat_css', 'autoprefixer', 'cssmin', 'injector'],
             options: {
                 spawn: false,
@@ -42,13 +22,36 @@ grunt.initConfig({
             },
         },
     },
+    wiredep: {
+        task: {
+            ignorePath: /^\/|\.\.\//,
+            src: [
+                'index.html'
+                ],
+            options: {
+
+            },
+        }
+    },
+    
+    injector: {
+        options: {
+            addRootSlash: false
+        },
+        local_dependencies: {
+            files: {
+                'index.html': ['public/assets/js/main.min.js', 'public/assets/css/main.min.css'],
+            }
+        }
+    },
+   
     sass: {
         dist: {
             files: [{
                 expand: true,
-                cwd: 'app/public/views',
+                cwd: 'public/app/views',
                 src: ['**/*.scss'],
-                dest: 'app/public/assets/css',
+                dest: 'public/assets/css',
                 ext: '.css'
             }]
         }
@@ -61,28 +64,28 @@ grunt.initConfig({
         target: {
             files: [{
                 expand: true,
-                cwd: 'app/public/assets/css/',
+                cwd: 'public/assets/css/',
                 src: ['main.css', '!*.min.css'],
-                dest: 'app/public/assets/css',
+                dest: 'public/assets/css',
                 ext: '.min.css'
             }]
         }
     },
     concat_css: {
         all: {
-            src: ["app/public/assets/css/**/*.css"],
-            dest: "app/public/assets/css/main.css"
+            src: ["public/assets/css/**/*.css"],
+            dest: "public/assets/css/main.css"
         }
     },
     autoprefixer:{
         dist:{
             files:{
-                'app/public/assets/css/main.css':'app/public/assets/css/main.css'
+                'public/assets/css/main.css':'public/assets/css/main.css'
             }
         }
     },
     clean: {
-        css: ['app/public/assets/css/**/*.css']
+        css: ['public/assets/css/**/*.css']
     },
     concurrent: {
         watch: ['watch'],

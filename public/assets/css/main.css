@@ -3,16 +3,23 @@
   display: -ms-flexbox;
   display: flex;
   transition: all .5s;
+  background: linear-gradient(to bottom, white, black); }
+
+.teste2 {
+  color: blue;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  background: linear-gradient(to bottom, white, black); }
-
-.teste2 {
-  color: blue; }
+  transition: all .5s; }
 .testeLogin {
   color: grey; }
 
 .testeLogin2 {
   color: purple; }
+
+.xao-container {
+  color: grey; }
+
+body {
+  background-color: rgba(0, 0, 0, 0.8); }
