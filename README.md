@@ -1,7 +1,7 @@
 # Node Quickstart
 Archetype for development.
 
-#Requirements
+# Requirements
 
 - http://sass-lang.com/install
 
