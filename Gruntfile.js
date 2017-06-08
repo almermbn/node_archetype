@@ -14,11 +14,12 @@ grunt.initConfig({
     },
     watch: {
         sass: {
-            files: ['public/**/*.{scss, sass}'],
+            files: ['public/**/*', '!public/**/*.html'],
             tasks: ['clean', 'sass', 'concat_css', 'autoprefixer', 'cssmin', 'injector'],
             options: {
                 spawn: false,
-                livereload: 35729
+                livereload: 35729,
+                event: ['changed', 'added', 'deleted']
             },
         },
         index: {

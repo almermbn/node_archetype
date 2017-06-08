@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,eAAgB;EACf,KAAK,EAAE,GAAG",
+"sources": ["../../../app/views/user/user.scss"],
+"names": [],
+"file": "user.css"
+}
