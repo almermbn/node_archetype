@@ -21,6 +21,13 @@ grunt.initConfig({
                 livereload: 35729
             },
         },
+        index: {
+            files: ['index.html'],
+            options: {
+                spawn: false,
+                livereload: 35729
+            },
+        },
     },
     wiredep: {
         task: {
